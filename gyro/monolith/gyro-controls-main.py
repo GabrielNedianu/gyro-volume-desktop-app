@@ -2,7 +2,10 @@
 Libs needed: bleak, pycaw, comtypes, keyboard
 This application uses a BLE peripheral (e.g. an Android app) that sends gyroscope data
 to adjust the Windows system volume and trigger media play/pause commands.
+
+P.S: This is the initial monolith app, it works standalone without the need of other packages.
 """
+
 
 import asyncio
 import threading
