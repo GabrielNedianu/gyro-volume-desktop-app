@@ -1,7 +1,12 @@
 """
 File: ui/ui_manager.py
-Defines the UIManager class, which encapsulates the Tkinter GUI,
-updates sensor readings, volume, connection status, and logs.
+Defines the UIManager class that encapsulates the Tkinter GUI.
+This class manages:
+  - Connection status updates (with icon)
+  - Sensor label updates
+  - Volume display updates
+  - Logging (with throttling)
+  - A refresh button to restart the BLE process
 """
 
 import time
@@ -16,21 +21,25 @@ class UIManager:
         self.last_log_time = 0
         self.LOG_INTERVAL = 2.0
         self.last_volume_disabled_logged = False
+        self.refresh_callback = None
         self.setup_gui()
+
+    def set_refresh_callback(self, callback):
+        self.refresh_callback = callback
 
     def setup_gui(self):
         self.root.title("BLE Gyro Volume Controller")
-        # Connection status frame with icon and label
+        # Connection status frame with icon and label.
         self.conn_frame = tk.Frame(self.root)
         self.conn_frame.pack(pady=5)
         self.conn_status_icon = tk.Label(self.conn_frame, text="❌", font=("Arial", 16))
         self.conn_status_icon.pack(side=tk.LEFT, padx=5)
         self.conn_status_label = tk.Label(self.conn_frame, text="BLE: Not connected", font=("Arial", 12))
         self.conn_status_label.pack(side=tk.LEFT)
-        # Volume display label
+        # Volume display label.
         self.volume_label = tk.Label(self.root, text="Windows Volume: 0%", font=("Arial", 16))
         self.volume_label.pack(pady=5)
-        # Sensor values display: Roll, Pitch, Yaw
+        # Sensor values display: Roll, Pitch, Yaw.
         self.sensor_frame = tk.Frame(self.root)
         self.sensor_frame.pack(pady=5)
         self.roll_label = tk.Label(self.sensor_frame, text="Roll: 0.00", font=("Arial", 14))
@@ -39,10 +48,17 @@ class UIManager:
         self.pitch_label.grid(row=0, column=1, padx=5)
         self.yaw_label = tk.Label(self.sensor_frame, text="Yaw: 0.00", font=("Arial", 14))
         self.yaw_label.grid(row=0, column=2, padx=5)
-        # Log text area for events
+        # Refresh button to restart BLE process.
+        self.refresh_button = tk.Button(self.root, text="Refresh BLE", command=self.refresh_ble)
+        self.refresh_button.pack(pady=5)
+        # Log text area for events, with fill and expand to resize.
         self.log_text = tk.Text(self.root, height=8, width=60)
-        self.log_text.pack(pady=5)
+        self.log_text.pack(pady=5, fill=tk.BOTH, expand=True)
         self.log_text.insert(tk.END, "Logs:\n")
+
+    def refresh_ble(self):
+        if self.refresh_callback:
+            self.refresh_callback()
 
     def update_connection_status(self, address: str, connected: bool = True):
         if connected:

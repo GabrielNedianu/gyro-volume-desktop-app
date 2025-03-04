@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89b5a4e7-3136-4bea-9130-535f8e2273ee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/gyro/ble/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/ble/ble_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/ui/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/ui/ui_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gyro/utils/volume_control.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gyro/main/gyro-controls-main.py" beforeDir="false" afterPath="$PROJECT_DIR$/gyro/monolith/gyro-controls-main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gyro/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/gyro/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gyro/ui/ui_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/gyro/ui/ui_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
