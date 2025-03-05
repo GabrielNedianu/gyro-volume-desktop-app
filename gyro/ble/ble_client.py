@@ -84,7 +84,7 @@ class BLEClient:
                             self.ui.throttled_log(f"Volume adjusted: roll={roll:.2f} -> Volume: {int(new_vol * 100)}%")
                         else:
                             if not self.ui.last_volume_disabled_logged:
-                                self.ui.throttled_log("Volume control disabled (phone not held level)")
+                                self.ui.log_message("Volume control disabled (phone not held level)")
                                 self.ui.last_volume_disabled_logged = True
 
                         # Play/Pause Gesture: when phone is tilted forward (pitch > -0.7)
@@ -96,11 +96,11 @@ class BLEClient:
                                 (current_time - self.last_pitch_time > gesture_cooldown)):
                                 keyboard.send("play/pause media")
                                 self.last_pitch_time = current_time
-                                self.ui.throttled_log("Gesture detected: Toggling Play/Pause")
+                                self.ui.log_message("Gesture detected: Toggling Play/Pause")
                         self.previous_pitch = pitch
                         self.previous_yaw = yaw
                 except Exception as e:
-                    self.ui.throttled_log(f"Notification error: {e}")
+                    self.ui.log_message(f"Notification error: {e}")
 
             # Retry loop for starting notifications.
             while True:
