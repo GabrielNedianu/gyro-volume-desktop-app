@@ -74,8 +74,8 @@ The project is organized into several modules:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/GabrielNedianu/ble-gyro-volume-controller-python.git
-   cd ble-gyro-volume-controller-python
+   git clone https://github.com/GabrielNedianu/gyro-volume-desktop-app.git
+   cd gyro-volume-desktop-app
    ```
 
 2. **Create and activate a virtual environment:**
